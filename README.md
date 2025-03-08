@@ -1,3 +1,4 @@
+
 In this guide, we’ll walk through the process of deploying an Microservice e-commerce app on Amazon EKS (Elastic Kubernetes Service). Whether you’re tech-savvy or not, this step-by-step tutorial will help you understand and execute the deployment process seamlessly.
 
 # Application Architecture: Microservice
@@ -37,3 +38,28 @@ This configuration file defines deployments and services for microservices such 
 # Jenkins File Explain
 
 This Jenkins pipeline automates the deployment and verification of Kubernetes resources. It leverages Jenkins' integration with Kubernetes via the Kubernetes credentials stored in Jenkins (credentialsId: 'k8-token') to deploy configurations (deployment-service.yml) and verify the deployment status (kubectl get svc). The pipeline ensures consistent and reliable deployment processes for applications hosted on Amazon EKS (EKS-1 cluster in us-east-1 region).
+
+# Shipping Service
+
+The Shipping service provides price quote, tracking IDs, and the impression of order fulfillment & shipping processes.
+
+## Local
+
+Run the following command to restore dependencies to `vendor/` directory:
+
+    dep ensure --vendor-only
+
+## Build
+
+From `src/shippingservice`, run:
+
+```
+docker build ./
+```
+
+## Test
+
+```
+go test .
+```
+
